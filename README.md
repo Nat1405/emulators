@@ -33,7 +33,7 @@ int main(){
 
 }
 ```
-##Translation to Assembly
+## Translation to Assembly
 I then discovered the wonderful gcc flag -S, to spit out assembly. This means we can generate assembly with `gcc fib.c -S`. Super cool right!
 
 This spit out a fib.s file that looks like:
@@ -139,11 +139,9 @@ L_.str:                                 ## @.str
 
 Now, I have no idea how to read x86 at this point. I tried to compile to something friendlier like MIPS or AVR assembly but that might have to wait. Cross compilation looks scary!
 
-###My Instruction Set Architecture
+## My Instruction Set Architecture
 
-I'm having a really hard time designing an ISA for an 8-bit system. What gave me a really hard time is the beq instruction. Really, I'm looking at at least two bits for the opcode. For some reason I was thinking I'd like 4 bits but that might be more than necessary. So, for a `beq` instruction to have access to two registers and an offset is hard in 8 bits; if we use three bits for the opcode, we have just 5 bits to specify two registers and the offset!!
-
-My solution is to create a `cmp` instruction that compares two reg
+I'm having a really hard time designing an ISA for an 8-bit system. What gave me a really hard time is the beq instruction and the add instruction. I'm giving it a whirl with two bits for the opcode and 6 bits for the operands for now.
 
 I have a lot more respect for folks who programmed 8-bit processors.
 
